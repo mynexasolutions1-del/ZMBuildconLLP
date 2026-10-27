@@ -4,8 +4,8 @@ import { company } from "@/lib/data";
 
 export default function JoinCommunity() {
   return (
-    <section className="overflow-hidden bg-white px-4 pb-6 pt-12 sm:px-8 sm:pb-10 sm:pt-20 lg:px-12">
-      <div className="mx-auto max-w-[1500px] text-[12.5vw] font-medium uppercase leading-[0.92] tracking-[-0.05em] text-[#2a2a2a] min-[1500px]:text-[188px]">
+    <section className="overflow-hidden bg-black px-4 pb-6 pt-12 sm:px-8 sm:pb-10 sm:pt-20 lg:px-12">
+      <div className="mx-auto max-w-[1500px] text-[12.5vw] font-medium uppercase leading-[0.92] tracking-[-0.05em] text-white min-[1500px]:text-[188px]">
         <div className="flex items-center justify-between">
           <Reveal from="left">
             <h2>Join Our</h2>

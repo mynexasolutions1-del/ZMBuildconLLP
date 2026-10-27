@@ -12,10 +12,11 @@ import {
   FiChevronRight,
   FiPenTool,
 } from "react-icons/fi";
+import { FaBuilding, FaPlaceOfWorship } from "react-icons/fa";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 import Reveal from "@/components/Reveal";
-import { services, processSteps, homes, company } from "@/lib/data";
+import { services, processSteps, sampleHomes, company } from "@/lib/data";
 
 export const metadata = {
   title: "Our Services",
@@ -26,6 +27,8 @@ export const metadata = {
 const ICONS = {
   turnkey: FiKey,
   bungalow: FiHome,
+  building: FaBuilding,
+  temple: FaPlaceOfWorship,
   interior: FiLayout,
   construction: FiTool,
   consultancy: FiClipboard,
@@ -47,19 +50,19 @@ export default function ServicesPage() {
           </>
         }
         subtitle="From the first plan to the final handover, we design, build and finish your space with care."
-        image={homes[1].image}
+        image={sampleHomes[1].image}
       />
 
-      <section className="bg-white p-2 sm:p-3">
-        <div className="rounded-[22px] bg-[#f4f4f4] px-3 py-10 sm:rounded-[28px] sm:px-6 sm:py-14 lg:px-8">
+      <section className="bg-black p-2 sm:p-3">
+        <div className="rounded-[22px] bg-[#141414] px-3 py-10 sm:rounded-[28px] sm:px-6 sm:py-14 lg:px-8">
           <Reveal className="mx-auto max-w-[620px] text-center">
-            <span className="inline-block rounded-full bg-black px-4 py-1.5 text-[12px] font-medium text-white">
+            <span className="inline-block rounded-full bg-white px-4 py-1.5 text-[12px] font-medium text-black">
               Our Services
             </span>
             <h2 className="mt-4 text-[32px] font-medium leading-[1.15] tracking-tight sm:text-[44px]">
               What we do best
             </h2>
-            <p className="mt-3 text-[15px] leading-snug text-neutral-600">
+            <p className="mt-3 text-[15px] leading-snug text-neutral-400">
               Five services, one trusted team. Choose one, or let us handle your whole project.
             </p>
           </Reveal>
@@ -69,8 +72,8 @@ export default function ServicesPage() {
               const Icon = ICONS[s.key];
               return (
                 <Reveal key={s.key} delay={(i % 3) * 120}>
-                  <article className="group relative flex h-full flex-col overflow-hidden rounded-[28px] bg-white p-7 transition duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.25)]">
-                    <span className="pointer-events-none absolute right-6 top-4 text-[64px] font-light leading-none text-neutral-200 transition-colors duration-500 group-hover:text-brand/50">
+                  <article className="group relative flex h-full flex-col overflow-hidden rounded-[28px] bg-[#1f1f1f] p-7 transition duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.25)]">
+                    <span className="pointer-events-none absolute right-6 top-4 text-[64px] font-light leading-none text-white/10 transition-colors duration-500 group-hover:text-brand/50">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div className="flex flex-1 flex-col">
@@ -83,11 +86,11 @@ export default function ServicesPage() {
                         <span className="h-0.5 w-6 rounded-full bg-brand transition-all duration-500 group-hover:w-10" />
                         {s.short}
                       </p>
-                      <p className="mt-4 text-[15px] leading-[1.65] text-neutral-600">{s.desc}</p>
+                      <p className="mt-4 text-[15px] leading-[1.65] text-neutral-400">{s.desc}</p>
 
-                      <ul className="mt-5 space-y-3 border-t border-neutral-100 pt-5">
+                      <ul className="mt-5 space-y-3 border-t border-white/10 pt-5">
                         {s.points.map((p) => (
-                          <li key={p} className="flex items-start gap-3 text-[14px] font-medium text-neutral-800">
+                          <li key={p} className="flex items-start gap-3 text-[14px] font-medium text-neutral-200">
                             <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-black">
                               <FiCheck size={12} strokeWidth={3} />
                             </span>
@@ -98,7 +101,7 @@ export default function ServicesPage() {
 
                       <Link
                         href="/contact"
-                        className="mt-6 inline-flex w-fit items-center gap-1.5 text-[14px] font-semibold transition-all group-hover:gap-3 group-hover:text-black"
+                        className="mt-6 inline-flex w-fit items-center gap-1.5 text-[14px] font-semibold transition-all group-hover:gap-3 group-hover:text-brand"
                       >
                         <span className="border-b-2 border-brand pb-0.5">Enquire now</span>
                         <FiArrowUpRight className="transition duration-300 group-hover:rotate-45" />
@@ -109,7 +112,7 @@ export default function ServicesPage() {
               );
             })}
 
-            <Reveal delay={240}>
+            <Reveal delay={240} className="lg:col-span-2">
               <div className="relative flex h-full min-h-[420px] flex-col justify-between overflow-hidden rounded-[28px] bg-brand p-8 text-black">
                 <div aria-hidden className="absolute -right-12 -top-12 h-52 w-52 rounded-full bg-white/25" />
                 <div aria-hidden className="absolute -bottom-16 -left-10 h-48 w-48 rounded-full bg-black/10" />
@@ -146,23 +149,23 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-white p-2 sm:p-3">
+      <section className="bg-black p-2 sm:p-3">
         <div
-          className="relative overflow-hidden rounded-[22px] bg-[#f4f4f4] px-4 py-14 text-neutral-900 sm:rounded-[28px] sm:px-8 sm:py-20 lg:px-10"
-          style={{ backgroundImage: "radial-gradient(#d6d6d6 1px, transparent 1px)", backgroundSize: "24px 24px" }}
+          className="relative overflow-hidden rounded-[22px] bg-[#141414] px-4 py-14 text-white sm:rounded-[28px] sm:px-8 sm:py-20 lg:px-10"
+          style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px)", backgroundSize: "24px 24px" }}
         >
           <div aria-hidden className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-brand/30 blur-3xl" />
           <div aria-hidden className="absolute -bottom-32 -right-16 h-80 w-80 rounded-full bg-brand/25 blur-3xl" />
 
           <Reveal className="relative mx-auto max-w-[620px] text-center">
-            <span className="inline-block rounded-full bg-black px-4 py-1.5 text-[12px] font-medium text-white">
+            <span className="inline-block rounded-full bg-white px-4 py-1.5 text-[12px] font-medium text-black">
               Our Process
             </span>
             <h2 className="mt-4 text-[34px] font-medium leading-[1.15] tracking-tight sm:text-[48px]">
               How we{" "}
               work
             </h2>
-            <p className="mt-3 text-[15px] leading-snug text-neutral-600">
+            <p className="mt-3 text-[15px] leading-snug text-neutral-400">
               A simple, transparent process so you always know what happens next.
             </p>
           </Reveal>
@@ -180,7 +183,7 @@ export default function ServicesPage() {
                 <Reveal key={step.title} delay={i * 120} className="group flex flex-col">
                   {/* node + connector (desktop) */}
                   <div className="hidden flex-col items-center lg:flex">
-                    <span className="relative z-10 grid h-11 w-11 place-items-center rounded-full bg-brand text-[15px] font-semibold text-black ring-8 ring-[#f4f4f4] transition duration-500 group-hover:scale-125 group-hover:bg-black group-hover:text-brand">
+                    <span className="relative z-10 grid h-11 w-11 place-items-center rounded-full bg-brand text-[15px] font-semibold text-black ring-8 ring-[#141414] transition duration-500 group-hover:scale-125 group-hover:bg-black group-hover:text-brand">
                       {i + 1}
                     </span>
                     <span
@@ -188,15 +191,15 @@ export default function ServicesPage() {
                     />
                   </div>
 
-                  <div className="relative flex-1 overflow-hidden rounded-3xl bg-white p-6 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.25)] transition duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.3)]">
-                    <span className="pointer-events-none absolute right-4 top-2 text-[72px] font-semibold leading-none text-transparent transition duration-500 [-webkit-text-stroke:1px_#d9d9d9] group-hover:[-webkit-text-stroke:1px_#e8b628]">
+                  <div className="relative flex-1 overflow-hidden rounded-3xl bg-[#1f1f1f] p-6 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.25)] transition duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.3)]">
+                    <span className="pointer-events-none absolute right-4 top-2 text-[72px] font-semibold leading-none text-transparent transition duration-500 [-webkit-text-stroke:1px_rgba(255,255,255,0.15)] group-hover:[-webkit-text-stroke:1px_#e8b628]">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="relative grid h-14 w-14 place-items-center rounded-2xl bg-black text-brand transition duration-500 group-hover:rotate-6 group-hover:bg-brand group-hover:text-black">
                       <Icon size={24} />
                     </span>
                     <h3 className="relative mt-12 text-[20px] font-semibold leading-tight">{step.title}</h3>
-                    <p className="relative mt-3 text-[14px] leading-[1.6] text-neutral-600">{step.desc}</p>
+                    <p className="relative mt-3 text-[14px] leading-[1.6] text-neutral-400">{step.desc}</p>
                     <span className="mt-5 block h-0.5 w-8 rounded-full bg-brand transition-all duration-500 group-hover:w-full" />
                   </div>
                 </Reveal>

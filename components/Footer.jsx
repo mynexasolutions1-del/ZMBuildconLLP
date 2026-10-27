@@ -31,7 +31,7 @@ export default function Footer() {
   const socials = company.socials.filter((s) => SOCIAL_ICONS[s.name]);
 
   return (
-    <footer id="contact" className="scroll-mt-20 bg-white p-2 sm:p-3">
+    <footer id="contact" className="scroll-mt-20 bg-black p-2 sm:p-3">
       <Reveal className="rounded-[22px] bg-[#141414] px-5 pb-6 pt-10 text-white sm:rounded-[28px] sm:px-10">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.1fr_1fr_1fr_1fr_1.5fr]">
           <div>

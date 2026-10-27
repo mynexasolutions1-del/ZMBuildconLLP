@@ -9,7 +9,7 @@ export default function CtaBand({
   text = "Tell us about your plot, budget and plan. Our team will get back to you with honest advice and a clear estimate.",
 }) {
   return (
-    <section className="bg-white p-2 sm:p-3">
+    <section className="bg-black p-2 sm:p-3">
       <Reveal className="relative overflow-hidden rounded-[22px] bg-[#141414] px-6 py-12 text-white sm:rounded-[28px] sm:px-12 sm:py-16">
         <div aria-hidden className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand/20 blur-3xl" />
         <div aria-hidden className="absolute -bottom-32 left-1/3 h-72 w-72 rounded-full bg-brand/10 blur-3xl" />

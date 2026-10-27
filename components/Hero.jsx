@@ -6,9 +6,9 @@ import { FaRupeeSign } from "react-icons/fa";
 import { images, cityOptions, typeOptions, priceOptions, SEARCH_EVENT } from "@/lib/data";
 import SearchSelect from "@/components/SearchSelect";
 
-/* Concave corner filler: makes the white search notch curve smoothly into the hero edges */
+/* Concave corner filler: makes the black search notch curve smoothly into the hero edges */
 const fillet = {
-  background: "radial-gradient(circle at 0 0, transparent 27px, #fff 28px)",
+  background: "radial-gradient(circle at 0 0, transparent 27px, #000 28px)",
 };
 
 export default function Hero() {
@@ -22,7 +22,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="bg-white p-2 sm:p-3">
+    <section className="bg-black p-2 sm:p-3">
       <div className="relative isolate min-h-[720px] overflow-hidden rounded-[22px] bg-neutral-800 sm:min-h-[680px] sm:rounded-[28px] lg:min-h-[780px]">
         <img
           src={images.hero}
@@ -57,12 +57,12 @@ export default function Hero() {
 
         {/* Search */}
         <div
-          className="absolute inset-x-3 bottom-3 animate-fade-up sm:inset-x-auto sm:bottom-0 sm:right-0 sm:w-[640px] sm:max-w-full sm:rounded-tl-[28px] sm:bg-white sm:pl-3 sm:pt-3 lg:w-[600px]"
+          className="absolute inset-x-3 bottom-3 animate-fade-up sm:inset-x-auto sm:bottom-0 sm:right-0 sm:w-[640px] sm:max-w-full sm:rounded-tl-[28px] sm:bg-black sm:pl-3 sm:pt-3 lg:w-[600px]"
           style={{ animationDelay: "0.8s" }}
         >
           <span aria-hidden className="absolute bottom-0 right-full hidden h-7 w-7 sm:block" style={fillet} />
           <span aria-hidden className="absolute bottom-full right-0 hidden h-7 w-7 sm:block" style={fillet} />
-          <div className="grid grid-cols-2 gap-x-4 gap-y-5 rounded-[22px] bg-black px-5 py-5 sm:flex sm:items-center sm:gap-5 sm:rounded-none sm:rounded-tl-[22px] sm:px-7 sm:py-6">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-5 rounded-[22px] bg-[#141414] px-5 py-5 sm:flex sm:items-center sm:gap-5 sm:rounded-none sm:rounded-tl-[22px] sm:px-7 sm:py-6">
             <SearchSelect
               icon={FiMapPin}
               label="Location"

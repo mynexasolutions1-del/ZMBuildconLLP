@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section id="about" className="scroll-mt-24 overflow-hidden px-4 pb-4 pt-14 sm:px-8 sm:pt-20 lg:px-10">
       <Reveal>
-        <h2 className="mx-auto max-w-lg text-center text-[32px] font-medium leading-[1.15] tracking-tight sm:text-[40px]">
+        <h2 className="mx-auto max-w-lg text-center text-[32px] text-white font-medium leading-[1.15] tracking-tight sm:text-[40px]">
           Building spaces
           <br />
           that elevate your life
@@ -20,12 +20,12 @@ export default function About() {
           delay={150}
           className="order-2 flex items-end justify-between gap-6 md:order-1 md:flex-col md:items-start md:justify-between md:py-1"
         >
-          <div className="grid h-[120px] w-[120px] shrink-0 place-items-center rounded-2xl border border-neutral-200 bg-white text-center transition duration-300 hover:-translate-y-1 hover:shadow-xl md:ml-16 lg:ml-24">
+          <div className="grid h-[120px] w-[120px] shrink-0 place-items-center rounded-2xl border border-white/10 bg-[#141414] text-center transition duration-300 hover:-translate-y-1 hover:shadow-xl md:ml-16 lg:ml-24">
             <div>
               <div className="text-[44px] font-medium leading-none tracking-tight">
                 10<sup className="ml-0.5 align-top text-base text-brand">+</sup>
               </div>
-              <div className="mt-1 text-[12px] leading-tight text-neutral-700">
+              <div className="mt-1 text-[12px] leading-tight text-neutral-300">
                 Year
                 <br />
                 of Expertise
@@ -33,12 +33,12 @@ export default function About() {
             </div>
           </div>
           <div className="max-w-[260px] md:mb-4">
-            <h3 className="text-[20px] font-semibold leading-tight">
+            <h3 className="text-[20px] font-semibold leading-tight text-white">
               Lock &amp; Key
               <br />
               Turnkey Projects
             </h3>
-            <p className="mt-2 text-[14px] leading-snug text-neutral-600">
+            <p className="mt-2 text-[14px] leading-snug text-neutral-400">
               From design to construction and interiors, we deliver a ready-to-move-in home.
             </p>
           </div>
@@ -71,12 +71,12 @@ export default function About() {
 
         {/* Right */}
         <Reveal from="right" delay={150} className="order-3 md:mt-10 md:self-start md:pl-10 lg:pl-16">
-          <h3 className="text-[20px] font-semibold leading-tight">
+          <h3 className="text-[20px] font-semibold leading-tight text-white">
             Expert Project
             <br />
             Consultancy
           </h3>
-          <p className="mt-2 max-w-[260px] text-[14px] leading-snug text-neutral-600">
+          <p className="mt-2 max-w-[260px] text-[14px] leading-snug text-neutral-400">
             From your first plan to the final handover, we guide you at every step.
           </p>
         </Reveal>

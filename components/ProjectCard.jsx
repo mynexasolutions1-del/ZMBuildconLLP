@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FiArrowUpRight, FiMapPin } from "react-icons/fi";
 
-export const PANEL = "#f4f4f4";
+export const PANEL = "#141414";
 
 /* Concave corner filler so the arrow notch curves smoothly into the image edges */
 const fillet = {
@@ -39,17 +39,17 @@ export default function ProjectCard({ home, highlighted }) {
 
       <div className="mt-4 flex items-center gap-2.5 text-[13px] text-neutral-500">
         <span>{home.meta[0]}</span>
-        <span className="h-3.5 w-px bg-neutral-300" />
+        <span className="h-3.5 w-px bg-white/20" />
         <span>{home.meta[1]}</span>
-        <span className="h-3.5 w-px bg-neutral-300" />
+        <span className="h-3.5 w-px bg-white/20" />
         <span>{home.meta[2]}</span>
       </div>
       <h3 className="mt-3 text-[20px] font-semibold leading-tight">{home.title}</h3>
-      <p className="mt-1.5 flex items-center gap-1.5 text-[13px] font-medium text-neutral-700">
+      <p className="mt-1.5 flex items-center gap-1.5 text-[13px] font-medium text-neutral-300">
         <FiMapPin size={13} className="text-brand" />
         {home.location}
       </p>
-      <p className="mt-2 max-w-[400px] text-[14px] leading-snug text-neutral-500">{home.desc}</p>
+      <p className="mt-2 max-w-[400px] text-[14px] leading-snug text-neutral-400">{home.desc}</p>
       <p className="mt-3 text-[15px] font-semibold">Budget: {home.price}</p>
     </article>
   );

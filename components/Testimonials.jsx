@@ -17,7 +17,7 @@ function ArrowTab({ side, onClick }) {
   const left = side === "left";
   return (
     <div
-      className={`absolute top-1/2 z-10 hidden h-28 w-12 -translate-y-1/2 items-center justify-center bg-white md:flex ${
+      className={`absolute top-1/2 z-10 hidden h-28 w-12 -translate-y-1/2 items-center justify-center bg-black md:flex ${
         left ? "left-0 rounded-r-full pr-2" : "right-0 rounded-l-full pl-2"
       }`}
     >
@@ -44,7 +44,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="reviews" className="scroll-mt-20 bg-white p-2 sm:p-3">
+    <section id="reviews" className="scroll-mt-20 bg-black p-2 sm:p-3">
       <div className="relative isolate overflow-hidden rounded-[22px] px-4 py-14 sm:rounded-[28px] sm:px-8 lg:px-20">
         <img src={images.testimonialBg} alt="" className="absolute inset-0 -z-20 h-full w-full scale-105 object-cover" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/80 via-black/60 to-black/40" />
@@ -65,17 +65,17 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <article
               key={t.name}
-              className="flex w-full shrink-0 snap-start flex-col justify-between rounded-2xl bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-2xl md:w-[calc(50%-8px)]"
+              className="flex w-full shrink-0 snap-start flex-col justify-between rounded-2xl bg-[#141414] p-6 text-white transition duration-300 hover:-translate-y-1 hover:shadow-2xl md:w-[calc(50%-8px)]"
             >
               <div>
                 <h3 className="text-[16px] font-bold leading-snug">{t.title}</h3>
-                <p className="mt-3 text-[14px] leading-[1.6] text-neutral-600">{t.text}</p>
+                <p className="mt-3 text-[14px] leading-[1.6] text-neutral-300">{t.text}</p>
               </div>
-              <div className="mt-6 flex items-center gap-3 border-t border-neutral-100 pt-4">
+              <div className="mt-6 flex items-center gap-3 border-t border-white/10 pt-4">
                 {t.avatar ? (
                   <img src={t.avatar} alt={t.name} className="h-12 w-12 rounded-lg object-cover" />
                 ) : (
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-brand/20 text-[15px] font-bold text-neutral-800">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-brand/20 text-[15px] font-bold text-white">
                     {initials(t.name)}
                   </span>
                 )}
@@ -83,7 +83,7 @@ export default function Testimonials() {
                   <div className="text-[14px] font-bold">{t.name}</div>
                   <div className="text-[13px] text-neutral-500">{t.role}</div>
                 </div>
-                <FaQuoteRight className="ml-auto text-neutral-200" size={36} />
+                <FaQuoteRight className="ml-auto text-white/10" size={36} />
               </div>
             </article>
           ))}

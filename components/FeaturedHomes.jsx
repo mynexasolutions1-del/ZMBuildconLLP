@@ -28,12 +28,12 @@ export default function FeaturedHomes() {
   const filtered = filters.city || filters.type || filters.maxCr;
 
   return (
-    <section id="properties" className="scroll-mt-20 bg-white p-2 sm:p-3">
+    <section id="properties" className="scroll-mt-20 bg-black p-2 sm:p-3">
       <div className="rounded-[22px] px-4 py-8 sm:rounded-[28px] sm:px-6 sm:py-10 lg:px-8" style={{ background: PANEL }}>
         <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="text-[30px] font-semibold tracking-tight sm:text-[38px]">Discover Our Featured Projects</h2>
-            <p className="mt-3 max-w-[480px] text-[14px] leading-snug text-neutral-600">
+            <p className="mt-3 max-w-[480px] text-[14px] leading-snug text-neutral-400">
               Explore bungalows, interiors and turnkey projects built by Z&amp;M Buildcon LLP with quality
               materials, honest pricing and on-time delivery.
             </p>
@@ -47,11 +47,11 @@ export default function FeaturedHomes() {
         </Reveal>
 
         {filtered && (
-          <div className="mt-6 flex flex-wrap items-center gap-3 text-[14px] text-neutral-600">
+          <div className="mt-6 flex flex-wrap items-center gap-3 text-[14px] text-neutral-400">
             <span>
-              Showing <b className="text-black">{visible.length}</b> of {homes.length} projects
+              Showing <b className="text-white">{visible.length}</b> of {homes.length} projects
             </span>
-            <button onClick={() => setFilters(NO_FILTERS)} className="font-semibold text-black underline underline-offset-4">
+            <button onClick={() => setFilters(NO_FILTERS)} className="font-semibold text-white underline underline-offset-4">
               Clear filters
             </button>
           </div>
@@ -66,7 +66,7 @@ export default function FeaturedHomes() {
             ))}
           </div>
         ) : (
-          <div className="mt-8 rounded-2xl bg-white px-6 py-14 text-center">
+          <div className="mt-8 rounded-2xl bg-[#1f1f1f] px-6 py-14 text-center">
             <p className="text-[20px] font-semibold">No projects match your search</p>
             <p className="mt-2 text-[14px] text-neutral-500">
               Try a different city, project type or a higher budget.

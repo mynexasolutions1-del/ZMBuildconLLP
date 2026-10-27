@@ -10,8 +10,8 @@ const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${enc
    Mobile: map on top, info card below. sm and up: the card floats over the map. */
 export default function MapSection() {
   return (
-    <section className="bg-white p-2 sm:p-3">
-      <Reveal className="relative isolate overflow-hidden rounded-[22px] bg-white shadow-[0_20px_60px_-30px_rgba(0,0,0,0.3)] sm:h-[560px] sm:rounded-[28px]">
+    <section className="bg-black p-2 sm:p-3">
+      <Reveal className="relative isolate overflow-hidden rounded-[22px] bg-[#141414] shadow-[0_20px_60px_-30px_rgba(0,0,0,0.3)] sm:h-[560px] sm:rounded-[28px]">
         {/* Map */}
         <div className="relative h-[320px] overflow-hidden sm:absolute sm:inset-0 sm:h-full">
           <iframe
@@ -37,12 +37,12 @@ export default function MapSection() {
 
         {/* Info card */}
         <div className="relative p-3 sm:pointer-events-none sm:absolute sm:inset-auto sm:bottom-6 sm:left-6 sm:p-0">
-          <div className="pointer-events-auto w-full rounded-3xl border border-neutral-200 bg-white p-5 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.35)] sm:w-[360px] sm:p-6">
+          <div className="pointer-events-auto w-full rounded-3xl border border-white/10 bg-[#141414] p-5 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.35)] sm:w-[360px] sm:p-6">
             <span className="inline-block rounded-full bg-brand px-3 py-1 text-[12px] font-semibold text-black">
               Head Office
             </span>
             <h3 className="mt-3 text-[20px] font-semibold leading-tight sm:text-[22px]">{company.name}</h3>
-            <p className="mt-2 flex items-start gap-2 text-[14px] leading-snug text-neutral-600">
+            <p className="mt-2 flex items-start gap-2 text-[14px] leading-snug text-neutral-400">
               <FiMapPin className="mt-0.5 shrink-0 text-brand" />
               {company.address}
             </p>
@@ -58,7 +58,7 @@ export default function MapSection() {
               </a>
               <a
                 href={`tel:+${company.phone}`}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-neutral-300 px-5 py-3 text-[14px] font-semibold transition hover:bg-black hover:text-white"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-5 py-3 text-[14px] font-semibold transition hover:bg-white hover:text-black"
               >
                 <FiPhone /> Call
               </a>

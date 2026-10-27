@@ -5,7 +5,7 @@ import Stats from "@/components/Stats";
 import Testimonials from "@/components/Testimonials";
 import CtaBand from "@/components/CtaBand";
 import Reveal from "@/components/Reveal";
-import { images, homes, values, company } from "@/lib/data";
+import { images, sampleHomes, values, company } from "@/lib/data";
 
 export const metadata = {
   title: "About Us",
@@ -17,14 +17,14 @@ const VALUE_ICONS = [FiShield, FiDollarSign, FiClock, FiHeart];
 
 const VALUE_STYLES = [
   {
-    card: "bg-white text-black",
-    desc: "text-neutral-600",
-    badge: "bg-black text-brand",
-    num: "[-webkit-text-stroke:1px_#d9d9d9] group-hover:[-webkit-text-stroke:1px_#e8b628]",
-    arrow: "border-neutral-300 text-neutral-500 group-hover:border-brand group-hover:bg-brand group-hover:text-black",
+    card: "bg-[#1f1f1f] text-white",
+    desc: "text-white/65",
+    badge: "bg-brand text-black",
+    num: "[-webkit-text-stroke:1px_rgba(255,255,255,0.15)] group-hover:[-webkit-text-stroke:1px_#e8b628]",
+    arrow: "border-white/25 text-white/60 group-hover:border-brand group-hover:bg-brand group-hover:text-black",
   },
   {
-    card: "bg-[#141414] text-white",
+    card: "bg-black text-white ring-1 ring-white/10",
     desc: "text-white/65",
     badge: "bg-brand text-black",
     num: "[-webkit-text-stroke:1px_rgba(255,255,255,0.2)] group-hover:[-webkit-text-stroke:1px_#e8b628]",
@@ -38,11 +38,11 @@ const VALUE_STYLES = [
     arrow: "border-black/30 text-black/70 group-hover:border-black group-hover:bg-black group-hover:text-brand",
   },
   {
-    card: "bg-white text-black",
-    desc: "text-neutral-600",
-    badge: "bg-black text-brand",
-    num: "[-webkit-text-stroke:1px_#d9d9d9] group-hover:[-webkit-text-stroke:1px_#e8b628]",
-    arrow: "border-neutral-300 text-neutral-500 group-hover:border-brand group-hover:bg-brand group-hover:text-black",
+    card: "bg-[#1f1f1f] text-white",
+    desc: "text-white/65",
+    badge: "bg-brand text-black",
+    num: "[-webkit-text-stroke:1px_rgba(255,255,255,0.15)] group-hover:[-webkit-text-stroke:1px_#e8b628]",
+    arrow: "border-white/25 text-white/60 group-hover:border-brand group-hover:bg-brand group-hover:text-black",
   },
 ];
 
@@ -72,7 +72,7 @@ export default function AboutPage() {
               <div aria-hidden className="absolute bottom-0 left-0 top-10 w-[82%] rounded-[32px] bg-brand" />
               <div
                 aria-hidden
-                className="absolute -left-4 top-24 h-24 w-24 rounded-full border-2 border-dashed border-black/20"
+                className="absolute -left-4 top-24 h-24 w-24 rounded-full border-2 border-dashed border-white/30"
               />
               <div className="group relative aspect-[4/5] overflow-hidden rounded-[32px] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.5)]">
                 <img
@@ -83,23 +83,23 @@ export default function AboutPage() {
               </div>
 
               {/* location badge */}
-              <div className="absolute left-0 top-16 flex animate-floaty items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-xl">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-black text-brand">
+              <div className="absolute left-0 top-16 flex animate-floaty items-center gap-3 rounded-2xl border border-white/10 bg-[#141414] px-4 py-3 shadow-xl">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-brand text-black">
                   <FiMapPin size={18} />
                 </span>
                 <span>
-                  <span className="block text-[11px] uppercase tracking-[0.1em] text-neutral-500">Based in</span>
+                  <span className="block text-[11px] uppercase tracking-[0.1em] text-neutral-400">Based in</span>
                   <span className="block text-[14px] font-semibold leading-tight">Ratanpur Kheda, Gujarat</span>
                 </span>
               </div>
 
               {/* secondary image */}
-              <div className="absolute -right-2 bottom-2 hidden h-40 w-40 overflow-hidden rounded-3xl border-[6px] border-white shadow-xl sm:block">
-                <img src={homes[0].image} alt="" loading="lazy" className="h-full w-full object-cover" />
+              <div className="absolute -right-2 bottom-2 hidden h-40 w-40 overflow-hidden rounded-3xl border-[6px] border-black shadow-xl sm:block">
+                <img src={sampleHomes[0].image} alt="" loading="lazy" className="h-full w-full object-cover" />
               </div>
 
               {/* stat badge */}
-              <div className="absolute bottom-0 left-12 rounded-2xl bg-black px-6 py-4 text-white shadow-xl">
+              <div className="absolute bottom-0 left-12 rounded-2xl border border-white/20 bg-black px-6 py-4 text-white shadow-xl">
                 <div className="text-[34px] font-medium leading-none text-brand">100%</div>
                 <div className="mt-1 text-[12px] text-white/75">Transparent pricing</div>
               </div>
@@ -108,19 +108,19 @@ export default function AboutPage() {
 
           {/* Text */}
           <Reveal from="right">
-            <span className="inline-block rounded-full bg-black px-4 py-1.5 text-[12px] font-medium text-white">
+            <span className="inline-block rounded-full bg-white px-4 py-1.5 text-[12px] font-medium text-black">
               Who we are
             </span>
-            <h2 className="mt-5 text-[34px] font-medium leading-[1.1] tracking-tight sm:text-[50px]">
+            <h2 className="mt-5 text-[34px] font-medium leading-[1.1] tracking-tight text-white sm:text-[50px]">
               We build homes and spaces that{" "}
               last
             </h2>
-            <p className="mt-6 text-[16px] leading-[1.75] text-neutral-600">
+            <p className="mt-6 text-[16px] leading-[1.75] text-neutral-400">
               {company.name} is based in Ratanpur Kheda, Gujarat. We design and build bungalows, interiors and
               complete lock and key projects, and we also guide clients as project consultants before they start
               building.
             </p>
-            <p className="mt-4 text-[16px] leading-[1.75] text-neutral-600">
+            <p className="mt-4 text-[16px] leading-[1.75] text-neutral-400">
               Our approach is simple: honest advice, clear cost, quality material and a team that stays with you
               from the first plan until the day you receive the keys.
             </p>
@@ -129,9 +129,9 @@ export default function AboutPage() {
               {["Turnkey delivery", "Vastu-friendly design", "Quality materials", "Clear, fair pricing"].map((f, i) => (
                 <div
                   key={f}
-                  className="group flex items-center gap-3 rounded-2xl bg-[#f4f4f4] px-4 py-3.5 transition duration-300 hover:-translate-y-0.5 hover:bg-brand"
+                  className="group flex items-center gap-3 rounded-2xl bg-[#1f1f1f] px-4 py-3.5 transition duration-300 hover:-translate-y-0.5 hover:bg-brand hover:text-black"
                 >
-                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-black text-brand transition group-hover:bg-white group-hover:text-black">
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand text-black transition group-hover:bg-black group-hover:text-brand">
                     <FiCheck size={16} strokeWidth={3} />
                   </span>
                   <span className="text-[15px] font-semibold">{f}</span>
@@ -142,13 +142,13 @@ export default function AboutPage() {
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-black px-7 py-4 text-[15px] font-semibold text-white transition-all hover:gap-3"
+                className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-[15px] font-semibold text-black transition-all hover:gap-3"
               >
                 Talk to our team <FiArrowUpRight className="transition group-hover:rotate-45" />
               </Link>
               <a
                 href={`tel:+${company.phone}`}
-                className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-7 py-4 text-[15px] font-semibold transition hover:border-brand hover:bg-brand"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 px-7 py-4 text-[15px] font-semibold text-white transition hover:border-brand hover:bg-brand hover:text-black"
               >
                 <FiPhoneCall /> {company.phoneDisplay}
               </a>
@@ -158,7 +158,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & vision */}
-      <section className="bg-white p-2 sm:p-3">
+      <section className="bg-black p-2 sm:p-3">
         <div className="grid gap-3 lg:grid-cols-12">
           {/* Mission */}
           <Reveal from="left" className="lg:col-span-5">
@@ -258,7 +258,7 @@ export default function AboutPage() {
             <Reveal from="right" delay={240}>
               <Link
                 href="/contact"
-                className="group relative flex items-center justify-between gap-6 overflow-hidden rounded-[22px] bg-[#f4f4f4] p-6 transition duration-500 hover:bg-white hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.3)] sm:rounded-[28px] sm:p-8"
+                className="group relative flex items-center justify-between gap-6 overflow-hidden rounded-[22px] bg-[#1f1f1f] p-6 transition duration-500 hover:bg-[#262626] sm:rounded-[28px] sm:p-8"
               >
                 <div>
                   <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-neutral-500">
@@ -270,7 +270,7 @@ export default function AboutPage() {
                     Prices you can trust.
                   </p>
                 </div>
-                <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-black text-white transition duration-500 group-hover:rotate-45 group-hover:bg-brand group-hover:text-black">
+                <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-white text-black transition duration-500 group-hover:rotate-45 group-hover:bg-brand group-hover:text-black">
                   <FiArrowUpRight size={26} />
                 </span>
               </Link>
@@ -280,17 +280,17 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="bg-white p-2 sm:p-3">
+      <section className="bg-black p-2 sm:p-3">
         <div
-          className="relative overflow-hidden rounded-[22px] bg-[#f4f4f4] px-4 py-12 sm:rounded-[28px] sm:px-8 sm:py-20 lg:px-12"
-          style={{ backgroundImage: "radial-gradient(#d6d6d6 1px, transparent 1px)", backgroundSize: "24px 24px" }}
+          className="relative overflow-hidden rounded-[22px] bg-[#141414] px-4 py-12 sm:rounded-[28px] sm:px-8 sm:py-20 lg:px-12"
+          style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px)", backgroundSize: "24px 24px" }}
         >
           <div aria-hidden className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-brand/30 blur-3xl" />
 
           <div className="relative mx-auto grid max-w-[1240px] gap-10 lg:grid-cols-[minmax(0,380px)_1fr] lg:gap-14">
             {/* Heading column */}
             <Reveal from="left" className="lg:sticky lg:top-28 lg:self-start">
-              <span className="inline-block rounded-full bg-black px-4 py-1.5 text-[12px] font-medium text-white">
+              <span className="inline-block rounded-full bg-white px-4 py-1.5 text-[12px] font-medium text-black">
                 Our Values
               </span>
               <h2 className="mt-5 text-[36px] font-medium leading-[1.08] tracking-tight sm:text-[52px]">
@@ -298,13 +298,13 @@ export default function AboutPage() {
                 choose{" "}
                 us
               </h2>
-              <p className="mt-5 max-w-[360px] text-[15px] leading-[1.7] text-neutral-600">
+              <p className="mt-5 max-w-[360px] text-[15px] leading-[1.7] text-neutral-400">
                 The values that guide every site, every drawing and every conversation, from the first call
                 to the day we hand over your keys.
               </p>
               <Link
                 href="/contact"
-                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-black px-7 py-4 text-[15px] font-semibold text-white transition-all hover:gap-3"
+                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-[15px] font-semibold text-black transition-all hover:gap-3"
               >
                 Talk to our team <FiArrowUpRight className="transition group-hover:rotate-45" />
               </Link>

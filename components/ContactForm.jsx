@@ -8,7 +8,7 @@ import { company, services } from "@/lib/data";
 const budgets = ["Under ₹25 Lakh", "₹25 - 50 Lakh", "₹50 Lakh - 1 Cr", "Above ₹1 Cr"];
 
 const input =
-  "w-full rounded-2xl border border-neutral-200 bg-white py-4 pl-12 pr-5 text-[15px] outline-none transition placeholder:text-neutral-400 hover:border-neutral-300 focus:border-brand focus:shadow-[0_0_0_4px_rgba(232,182,40,0.2)]";
+  "w-full rounded-2xl border border-white/10 bg-[#1f1f1f] py-4 pl-12 pr-5 text-[15px] text-white outline-none transition placeholder:text-neutral-400 hover:border-white/25 focus:border-brand focus:shadow-[0_0_0_4px_rgba(232,182,40,0.2)]";
 
 function Chip({ active, onClick, children }) {
   return (
@@ -18,11 +18,11 @@ function Chip({ active, onClick, children }) {
       aria-pressed={active}
       className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2.5 text-[14px] font-medium transition duration-300 ${
         active
-          ? "border-black bg-black text-white shadow-lg"
-          : "border-neutral-200 bg-white text-neutral-700 hover:-translate-y-0.5 hover:border-brand hover:bg-brand/15"
+          ? "border-brand bg-brand text-black shadow-lg"
+          : "border-white/10 bg-[#1f1f1f] text-neutral-300 hover:-translate-y-0.5 hover:border-brand hover:bg-brand/15"
       }`}
     >
-      {active && <FiCheck size={14} className="text-brand" />}
+      {active && <FiCheck size={14} />}
       {children}
     </button>
   );
@@ -106,7 +106,7 @@ export default function ContactForm() {
         value={form.message}
         onChange={set("message")}
         placeholder="Tell us about your project (location, plot size, timeline...)"
-        className="w-full resize-none rounded-2xl border border-neutral-200 bg-white px-5 py-4 text-[15px] outline-none transition placeholder:text-neutral-400 hover:border-neutral-300 focus:border-brand focus:shadow-[0_0_0_4px_rgba(232,182,40,0.2)]"
+        className="w-full resize-none rounded-2xl border border-white/10 bg-[#1f1f1f] px-5 py-4 text-white text-[15px] outline-none transition placeholder:text-neutral-400 hover:border-white/25 focus:border-brand focus:shadow-[0_0_0_4px_rgba(232,182,40,0.2)]"
       />
 
       <div className="flex flex-col gap-3 sm:flex-row">
@@ -118,7 +118,7 @@ export default function ContactForm() {
         </button>
         <a
           href={mailHref}
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-neutral-300 px-7 py-4 text-[15px] font-semibold transition hover:bg-black hover:text-white"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-7 py-4 text-[15px] font-semibold transition hover:bg-white hover:text-black"
         >
           <FiMail /> Send by Email
         </a>

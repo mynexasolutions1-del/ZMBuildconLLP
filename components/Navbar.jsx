@@ -41,15 +41,17 @@ export default function Navbar() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 flex animate-fade-down items-center justify-between px-6 transition-all duration-300 sm:px-11 ${
-          scrolled ? "bg-black/85 py-1.5 shadow-lg backdrop-blur-md sm:py-2" : "py-3 sm:py-5"
+          scrolled
+            ? "bg-black/85 py-1.5 shadow-lg backdrop-blur-md sm:py-2"
+            : "bg-gradient-to-b from-black/70 via-black/30 to-transparent py-3 sm:py-5"
         }`}
       >
         <Link href="/" className="flex items-center">
           <img
             src="/logo.png"
             alt={company.name}
-            className={`w-auto object-contain transition-all duration-300 ${
-              scrolled ? "h-12 sm:h-14" : "h-16 sm:h-20"
+            className={`w-auto object-contain transition-all duration-300 [filter:drop-shadow(0_0_2px_rgba(0,0,0,0.85))_drop-shadow(0_2px_10px_rgba(0,0,0,0.6))] ${
+              scrolled ? "h-14 sm:h-16" : "h-[72px] sm:h-24"
             }`}
           />
         </Link>

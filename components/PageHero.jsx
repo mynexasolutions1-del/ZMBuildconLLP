@@ -3,7 +3,7 @@ import Link from "next/link";
 /* Inner-page banner: same rounded, framed look as the home hero. */
 export default function PageHero({ crumb, title, subtitle, image, position = "50% 40%" }) {
   return (
-    <section className="bg-white p-2 sm:p-3">
+    <section className="bg-black p-2 sm:p-3">
       <div className="relative isolate flex min-h-[440px] items-end overflow-hidden rounded-[22px] bg-neutral-800 sm:min-h-[500px] sm:rounded-[28px]">
         <img
           src={image}
