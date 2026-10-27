@@ -67,11 +67,11 @@ export default function ServicesPage() {
             </p>
           </Reveal>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
             {services.map((s, i) => {
               const Icon = ICONS[s.key];
               return (
-                <Reveal key={s.key} delay={(i % 3) * 120}>
+                <Reveal key={s.key} delay={(i % 3) * 120} className="w-full md:w-[calc(50%-8px)] lg:w-[calc((100%-32px)/3)]">
                   <article className="group relative flex h-full flex-col overflow-hidden rounded-[28px] bg-[#1f1f1f] p-7 transition duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.25)]">
                     <span className="pointer-events-none absolute right-6 top-4 text-[64px] font-light leading-none text-white/10 transition-colors duration-500 group-hover:text-brand/50">
                       {String(i + 1).padStart(2, "0")}
@@ -112,7 +112,7 @@ export default function ServicesPage() {
               );
             })}
 
-            <Reveal delay={240} className="lg:col-span-2">
+            <Reveal delay={240} className="w-full md:w-[calc(50%-8px)] lg:w-[calc((100%-32px)/3)]">
               <div className="relative flex h-full min-h-[420px] flex-col justify-between overflow-hidden rounded-[28px] bg-brand p-8 text-black">
                 <div aria-hidden className="absolute -right-12 -top-12 h-52 w-52 rounded-full bg-white/25" />
                 <div aria-hidden className="absolute -bottom-16 -left-10 h-48 w-48 rounded-full bg-black/10" />
