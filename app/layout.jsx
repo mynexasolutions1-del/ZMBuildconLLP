@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -48,6 +49,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <main className="w-full overflow-hidden bg-black">{children}</main>
         <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   );

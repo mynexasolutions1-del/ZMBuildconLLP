@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { homes, SEARCH_EVENT } from "@/lib/data";
+import Link from "next/link";
+import { homes, SEARCH_EVENT, OTHER_CITY } from "@/lib/data";
 import Reveal from "@/components/Reveal";
 import ProjectCard, { PANEL } from "@/components/ProjectCard";
 
-const NO_FILTERS = { city: null, type: null, maxCr: null };
+const NO_FILTERS = { city: null, type: null, category: null };
+const HOME_LIMIT = 3;
 
-const matchesCity = (home, city) =>
-  !city || home.city === city || (city === "Delhi NCR" && home.city === "Gurugram");
+const matchesCity = (home, city) => !city || (city === OTHER_CITY ? !home.city : home.city === city);
 
 export default function FeaturedHomes() {
   const [filters, setFilters] = useState(NO_FILTERS);
@@ -19,13 +20,15 @@ export default function FeaturedHomes() {
     return () => window.removeEventListener(SEARCH_EVENT, onSearch);
   }, []);
 
-  const visible = homes.filter(
+  const filtered = filters.city || filters.type || filters.category;
+  const matches = homes.filter(
     (h) =>
       matchesCity(h, filters.city) &&
       (!filters.type || h.type === filters.type) &&
-      (!filters.maxCr || h.priceCr <= filters.maxCr)
+      (!filters.category || h.meta[0] === filters.category)
   );
-  const filtered = filters.city || filters.type || filters.maxCr;
+  // Home page only teases a few projects; a search shows every match, the full list lives on /projects.
+  const visible = filtered ? matches : matches.slice(0, HOME_LIMIT);
 
   return (
     <section id="properties" className="scroll-mt-20 bg-black p-2 sm:p-3">
@@ -38,12 +41,12 @@ export default function FeaturedHomes() {
               materials, honest pricing and on-time delivery.
             </p>
           </div>
-          <button
-            onClick={() => setFilters(NO_FILTERS)}
+          <Link
+            href="/projects"
             className="self-start rounded-full bg-brand px-5 py-2.5 text-[14px] font-semibold text-black transition hover:brightness-95 sm:self-end"
           >
             See all Projects
-          </button>
+          </Link>
         </Reveal>
 
         {filtered && (

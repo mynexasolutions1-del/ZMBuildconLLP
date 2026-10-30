@@ -1,7 +1,8 @@
 import PageHero from "@/components/PageHero";
 import ProjectsGrid from "@/components/ProjectsGrid";
+import WorkGallery from "@/components/WorkGallery";
 import CtaBand from "@/components/CtaBand";
-import { sampleHomes } from "@/lib/data";
+import { banners } from "@/lib/data";
 
 export const metadata = {
   title: "Our Projects",
@@ -22,9 +23,10 @@ export default function ProjectsPage() {
           </>
         }
         subtitle="Bungalows, interiors and turnkey projects delivered with quality materials, honest pricing and on-time handover."
-        image={sampleHomes[3].image}
+        image={banners[3]}
       />
       <ProjectsGrid />
+      <WorkGallery />
       <CtaBand
         title="Want your project to be our next success story?"
         text="Share your plot details and budget. We will suggest the best plan and give you a clear, transparent estimate."

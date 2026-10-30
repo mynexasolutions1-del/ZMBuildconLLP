@@ -5,7 +5,7 @@ import CountUp from "@/components/CountUp";
 export default function Stats() {
   return (
     <section className="px-4 pb-14 pt-8 sm:px-8 sm:pb-16 sm:pt-14 lg:px-10">
-      <div className="mx-auto grid max-w-[1200px] grid-cols-2 gap-x-3 gap-y-10 lg:grid-cols-4">
+      <div className="mx-auto flex max-w-[1200px] flex-wrap justify-center gap-x-3 gap-y-10 sm:gap-x-16">
         {stats.map((s, i) => (
           <Reveal key={s.label} delay={i * 120} className="flex justify-center">
             <div className="group relative flex flex-col items-center sm:inline-block sm:pr-12">

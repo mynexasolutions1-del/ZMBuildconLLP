@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { FiSearch, FiMapPin, FiHome } from "react-icons/fi";
-import { FaRupeeSign } from "react-icons/fa";
-import { images, cityOptions, typeOptions, priceOptions, SEARCH_EVENT } from "@/lib/data";
+import { useEffect, useRef, useState } from "react";
+import { FiSearch, FiMapPin, FiHome, FiGrid } from "react-icons/fi";
+import { heroSlides, cityOptions, typeOptions, categoryOptions, SEARCH_EVENT } from "@/lib/data";
 import SearchSelect from "@/components/SearchSelect";
 
 /* Concave corner filler: makes the black search notch curve smoothly into the hero edges */
@@ -11,25 +10,76 @@ const fillet = {
   background: "radial-gradient(circle at 0 0, transparent 27px, #000 28px)",
 };
 
+const SLIDE_MS = 5000;
+const SWIPE_PX = 50;
+
 export default function Hero() {
+  const [slide, setSlide] = useState(0);
+  const paused = useRef(false);
+  const touchX = useRef(null);
+  const go = (d) => setSlide((i) => (i + d + heroSlides.length) % heroSlides.length);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      if (!paused.current) go(1);
+    }, SLIDE_MS);
+    return () => clearInterval(id);
+  }, []);
+
+  const onTouchEnd = (e) => {
+    if (touchX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    touchX.current = null;
+    if (Math.abs(dx) > SWIPE_PX) go(dx < 0 ? 1 : -1);
+  };
+
   const [city, setCity] = useState(null);
   const [type, setType] = useState(null);
-  const [maxCr, setMaxCr] = useState(null);
+  const [category, setCategory] = useState(null);
 
   const handleSearch = () => {
-    window.dispatchEvent(new CustomEvent(SEARCH_EVENT, { detail: { city, type, maxCr } }));
+    window.dispatchEvent(new CustomEvent(SEARCH_EVENT, { detail: { city, type, category } }));
     document.getElementById("properties")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
     <section className="bg-black p-2 sm:p-3">
-      <div className="relative isolate min-h-[720px] overflow-hidden rounded-[22px] bg-neutral-800 sm:min-h-[680px] sm:rounded-[28px] lg:min-h-[780px]">
-        <img
-          src={images.hero}
-          alt=""
-          className="absolute inset-0 -z-20 h-full w-full animate-kenburns object-cover object-[50%_28%]"
-        />
+      <div
+        onMouseEnter={() => (paused.current = true)}
+        onMouseLeave={() => (paused.current = false)}
+        onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
+        onTouchEnd={onTouchEnd}
+        className="relative isolate min-h-[720px] overflow-hidden rounded-[22px] bg-neutral-800 sm:min-h-[680px] sm:rounded-[28px] lg:min-h-[780px]"
+      >
+        {heroSlides.map((s, i) => (
+          <img
+            key={s.src}
+            src={s.src}
+            alt=""
+            aria-hidden={i !== slide}
+            loading={i === 0 ? "eager" : "lazy"}
+            style={{ objectPosition: s.position }}
+            className={`absolute inset-0 -z-20 h-full w-full object-cover transition-opacity duration-[1400ms] ease-in-out ${
+              i === slide ? "animate-kenburns opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/55 via-50% to-black/25 sm:from-black/65 sm:via-black/10 sm:via-60% sm:to-black/25" />
+
+        {/* Slide dots */}
+        <div className="absolute right-3 top-1/2 z-10 flex -translate-y-1/2 flex-col gap-2.5 sm:right-5">
+          {heroSlides.map((s, i) => (
+            <button
+              key={s.src}
+              onClick={() => setSlide(i)}
+              aria-label={`Show slide ${i + 1}`}
+              aria-current={i === slide}
+              className={`w-1.5 rounded-full transition-all duration-500 ${
+                i === slide ? "h-8 bg-brand" : "h-1.5 bg-white/50 hover:bg-white"
+              }`}
+            />
+          ))}
+        </div>
 
         {/* Headline */}
         <div
@@ -66,7 +116,7 @@ export default function Hero() {
             <SearchSelect
               icon={FiMapPin}
               label="Location"
-              placeholder="Select city"
+              placeholder="All locations"
               options={cityOptions}
               value={city}
               onChange={setCity}
@@ -82,12 +132,12 @@ export default function Hero() {
               align="center"
             />
             <SearchSelect
-              icon={FaRupeeSign}
-              label="Max budget"
-              placeholder="Any budget"
-              options={priceOptions}
-              value={maxCr}
-              onChange={setMaxCr}
+              icon={FiGrid}
+              label="Category"
+              placeholder="Any category"
+              options={categoryOptions}
+              value={category}
+              onChange={setCategory}
               align="right"
             />
             <button

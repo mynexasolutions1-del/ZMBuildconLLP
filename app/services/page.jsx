@@ -16,7 +16,7 @@ import { FaBuilding, FaPlaceOfWorship } from "react-icons/fa";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 import Reveal from "@/components/Reveal";
-import { services, processSteps, sampleHomes, company } from "@/lib/data";
+import { services, processSteps, banners, company, homes } from "@/lib/data";
 
 export const metadata = {
   title: "Our Services",
@@ -36,6 +36,8 @@ const ICONS = {
 
 const STEP_ICONS = [FiMessageCircle, FiPenTool, FiTool, FiLayout, FiKey];
 
+// Projects where we provide planning, budgeting, liaisoning and supervision (cards that carry a `services` list).
+const servedProjects = homes.filter((h) => h.services);
 
 export default function ServicesPage() {
   return (
@@ -50,7 +52,7 @@ export default function ServicesPage() {
           </>
         }
         subtitle="From the first plan to the final handover, we design, build and finish your space with care."
-        image={sampleHomes[1].image}
+        image={banners[1]}
       />
 
       <section className="bg-black p-2 sm:p-3">
@@ -145,6 +147,53 @@ export default function ServicesPage() {
                 </div>
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-black p-2 sm:p-3">
+        <div className="rounded-[22px] bg-[#141414] px-3 py-10 sm:rounded-[28px] sm:px-6 sm:py-14 lg:px-8">
+          <Reveal className="mx-auto max-w-[620px] text-center">
+            <span className="inline-block rounded-full bg-white px-4 py-1.5 text-[12px] font-medium text-black">
+              Our Projects
+            </span>
+            <h2 className="mt-4 text-[32px] font-medium leading-[1.15] tracking-tight sm:text-[44px]">
+              Services we deliver on every project
+            </h2>
+            <p className="mt-3 text-[15px] leading-snug text-neutral-400">
+              From the first plan to the final handover, here is what we take care of on these projects.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {servedProjects.map((p, i) => (
+              <Reveal key={p.title} delay={(i % 4) * 110}>
+                <article className="group flex h-full flex-col overflow-hidden rounded-[24px] bg-[#1f1f1f] transition duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.4)]">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition duration-[900ms] ease-out group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-5">
+                    <h3 className="text-[20px] font-semibold leading-tight">{p.title}</h3>
+                    <p className="mt-1.5 text-[13px] text-neutral-500">{p.meta[0]} · {p.meta[1]}</p>
+                    <ul className="mt-4 space-y-2.5 border-t border-white/10 pt-4">
+                      {p.services.map((sv) => (
+                        <li key={sv} className="flex items-center gap-3 text-[14px] font-medium text-neutral-200">
+                          <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-black">
+                            <FiCheck size={12} strokeWidth={3} />
+                          </span>
+                          {sv}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

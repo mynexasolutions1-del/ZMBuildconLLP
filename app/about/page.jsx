@@ -2,16 +2,19 @@ import Link from "next/link";
 import { FiTarget, FiEye, FiShield, FiDollarSign, FiClock, FiHeart, FiArrowUpRight, FiCheck, FiMapPin, FiPhoneCall } from "react-icons/fi";
 import PageHero from "@/components/PageHero";
 import Stats from "@/components/Stats";
-import Testimonials from "@/components/Testimonials";
+import ProjectCard, { PANEL } from "@/components/ProjectCard";
 import CtaBand from "@/components/CtaBand";
 import Reveal from "@/components/Reveal";
-import { images, sampleHomes, values, company } from "@/lib/data";
+import { images, banners, values, company, homes } from "@/lib/data";
 
 export const metadata = {
   title: "About Us",
   description:
-    "Z&M Buildcon LLP is a construction and project consultancy company from Ratanpur Kheda, Gujarat, building bungalows, interiors and turnkey projects.",
+    "Z&M Buildcon LLP plans, budgets and supervises building projects such as Samsara Kalp Vriksh, Link, Khokhara and Kalp Vatrika, along with bungalows and interiors in Gujarat.",
 };
+
+const buildingProjects = homes.filter((h) => h.services);
+const scope = ["Planning", "Budget", "Liaisoning", "Supervision"];
 
 const VALUE_ICONS = [FiShield, FiDollarSign, FiClock, FiHeart];
 
@@ -58,9 +61,9 @@ export default function AboutPage() {
             one project at a time
           </>
         }
-        subtitle="Z&M Buildcon LLP is a Gujarat-based construction and project consultancy company."
-        image={images.hero}
-        position="50% 28%"
+        subtitle="Z&M Buildcon LLP plans, budgets and supervises building projects across Gujarat, from the first drawing to the final handover."
+        image="/work/drone-1.jpg"
+        position="50% 40%"
       />
 
       {/* Story */}
@@ -77,7 +80,7 @@ export default function AboutPage() {
               <div className="group relative aspect-[4/5] overflow-hidden rounded-[32px] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.5)]">
                 <img
                   src={images.about}
-                  alt="Bungalow built by Z&M Buildcon"
+                  alt="Samsara Kalp Vriksh, a project by Z&M Buildcon"
                   className="h-full w-full object-cover transition duration-[1200ms] ease-out group-hover:scale-105"
                 />
               </div>
@@ -95,13 +98,13 @@ export default function AboutPage() {
 
               {/* secondary image */}
               <div className="absolute -right-2 bottom-2 hidden h-40 w-40 overflow-hidden rounded-3xl border-[6px] border-black shadow-xl sm:block">
-                <img src={sampleHomes[0].image} alt="" loading="lazy" className="h-full w-full object-cover" />
+                <img src={banners[0]} alt="" loading="lazy" className="h-full w-full object-cover" />
               </div>
 
               {/* stat badge */}
               <div className="absolute bottom-0 left-12 rounded-2xl border border-white/20 bg-black px-6 py-4 text-white shadow-xl">
-                <div className="text-[34px] font-medium leading-none text-brand">100%</div>
-                <div className="mt-1 text-[12px] text-white/75">Transparent pricing</div>
+                <div className="text-[34px] font-medium leading-none text-brand">{buildingProjects.length}</div>
+                <div className="mt-1 text-[12px] text-white/75">Samsara building projects</div>
               </div>
             </div>
           </Reveal>
@@ -116,17 +119,17 @@ export default function AboutPage() {
               last
             </h2>
             <p className="mt-6 text-[16px] leading-[1.75] text-neutral-400">
-              {company.name} is based in Ratanpur Kheda, Gujarat. We design and build bungalows, interiors and
-              complete lock and key projects, and we also guide clients as project consultants before they start
-              building.
+              {company.name} is based in Ratanpur Kheda, Gujarat. We work on building projects such as Samsara
+              Kalp Vriksh, Samsara Link, Samsara Khokhara and Samsara Kalp Vatrika, and we also design and deliver
+              bungalows and interiors.
             </p>
             <p className="mt-4 text-[16px] leading-[1.75] text-neutral-400">
-              Our approach is simple: honest advice, clear cost, quality material and a team that stays with you
-              from the first plan until the day you receive the keys.
+              On every project we take care of planning, budget, liaisoning and supervision, so the owner gets
+              honest advice, clear cost and a team that stays with the work from the first plan until handover.
             </p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {["Turnkey delivery", "Vastu-friendly design", "Quality materials", "Clear, fair pricing"].map((f, i) => (
+              {["Planning & budgeting", "Liaisoning & approvals", "Site supervision", "Bungalows & interiors"].map((f, i) => (
                 <div
                   key={f}
                   className="group flex items-center gap-3 rounded-2xl bg-[#1f1f1f] px-4 py-3.5 transition duration-300 hover:-translate-y-0.5 hover:bg-brand hover:text-black"
@@ -351,8 +354,42 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Projects we serve */}
+      <section className="bg-black p-2 sm:p-3">
+        <div className="rounded-[22px] px-4 py-10 sm:rounded-[28px] sm:px-6 sm:py-14 lg:px-8" style={{ background: PANEL }}>
+          <Reveal className="mx-auto max-w-[640px] text-center">
+            <span className="inline-block rounded-full bg-white px-4 py-1.5 text-[12px] font-medium text-black">
+              Our Work
+            </span>
+            <h2 className="mt-4 text-[32px] font-medium leading-[1.15] tracking-tight sm:text-[44px]">
+              Projects we take care of
+            </h2>
+            <p className="mt-3 text-[15px] leading-snug text-neutral-400">
+              On each of these we handle {scope.slice(0, -1).join(", ").toLowerCase()} and {scope.at(-1).toLowerCase()},
+              and more.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid gap-x-4 gap-y-10 sm:grid-cols-2 xl:grid-cols-4">
+            {buildingProjects.map((home, i) => (
+              <Reveal key={home.title} delay={(i % 4) * 110}>
+                <ProjectCard home={home} />
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="mt-10 text-center">
+            <Link
+              href="/projects"
+              className="group inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-[15px] font-semibold text-black transition-all hover:gap-3"
+            >
+              See all projects <FiArrowUpRight className="transition group-hover:rotate-45" />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
       <Stats />
-      <Testimonials />
       <CtaBand />
     </>
   );

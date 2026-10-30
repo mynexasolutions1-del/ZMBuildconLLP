@@ -4,7 +4,7 @@ import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
 import MapSection from "@/components/MapSection";
-import { company, sampleHomes } from "@/lib/data";
+import { company, banners } from "@/lib/data";
 
 export const metadata = {
   title: "Contact Us",
@@ -37,7 +37,7 @@ export default function ContactPage() {
           </>
         }
         subtitle="Call, message or send an enquiry. Our team will get back to you with honest advice and a clear estimate."
-        image={sampleHomes[0].image}
+        image={banners[0]}
       />
 
       <section className="bg-black p-2 sm:p-3">
