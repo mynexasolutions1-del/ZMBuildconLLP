@@ -33,9 +33,12 @@ export default function Footer() {
   return (
     <footer id="contact" className="scroll-mt-20 bg-black p-2 sm:p-3">
       <Reveal className="rounded-[22px] bg-[#141414] px-5 pb-6 pt-10 text-white sm:rounded-[28px] sm:px-10">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.1fr_1fr_1fr_1fr_1.5fr]">
-          <div>
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr_1.4fr]">
+          <div className="sm:col-span-2 lg:col-span-1">
             <img src="/logo.png" alt={company.name} className="h-24 w-auto object-contain" />
+            <p className="mt-4 max-w-[280px] text-[15px] leading-[1.6] text-white/60">
+              Turnkey projects, bungalows, interiors, construction and project consultancy across Gujarat.
+            </p>
           </div>
 
           {footerColumns.map((col) => (

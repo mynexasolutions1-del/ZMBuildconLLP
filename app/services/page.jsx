@@ -12,11 +12,19 @@ import {
   FiChevronRight,
   FiPenTool,
 } from "react-icons/fi";
-import { FaBuilding, FaPlaceOfWorship } from "react-icons/fa";
+import { FaBuilding, FaPlaceOfWorship, FaWhatsapp } from "react-icons/fa";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 import Reveal from "@/components/Reveal";
-import { services, processSteps, banners, company, homes } from "@/lib/data";
+import ProjectServices from "@/components/ProjectServices";
+import {
+  services,
+  processSteps,
+  banners,
+  company,
+  homes,
+  whatsappLink,
+} from "@/lib/data";
 
 export const metadata = {
   title: "Our Services",
@@ -33,6 +41,13 @@ const ICONS = {
   construction: FiTool,
   consultancy: FiClipboard,
 };
+
+const QUICK_LINKS = [
+  { label: "Core services", href: "#core-services" },
+  { label: "Project related services", href: "#project-services" },
+  { label: "Our projects", href: "#our-projects" },
+  { label: "How we work", href: "#process" },
+];
 
 const STEP_ICONS = [FiMessageCircle, FiPenTool, FiTool, FiLayout, FiKey];
 
@@ -55,7 +70,24 @@ export default function ServicesPage() {
         image={banners[1]}
       />
 
-      <section className="bg-black p-2 sm:p-3">
+      <section className="bg-black px-2 sm:px-3">
+        <nav
+          aria-label="On this page"
+          className="flex flex-wrap items-center justify-center gap-2 rounded-[22px] bg-[#141414] px-4 py-4 sm:rounded-[28px]"
+        >
+          {QUICK_LINKS.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="rounded-full bg-white/10 px-5 py-2 text-[13px] font-medium text-white/80 transition hover:bg-brand hover:text-black"
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+      </section>
+
+      <section id="core-services" className="scroll-mt-20 bg-black p-2 sm:p-3">
         <div className="rounded-[22px] bg-[#141414] px-3 py-10 sm:rounded-[28px] sm:px-6 sm:py-14 lg:px-8">
           <Reveal className="mx-auto max-w-[620px] text-center">
             <span className="inline-block rounded-full bg-white px-4 py-1.5 text-[12px] font-medium text-black">
@@ -65,21 +97,26 @@ export default function ServicesPage() {
               What we do best
             </h2>
             <p className="mt-3 text-[15px] leading-snug text-neutral-400">
-              Five services, one trusted team. Choose one, or let us handle your whole project.
+              Seven services, one trusted team. Choose one, or let us handle your whole project.
             </p>
           </Reveal>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => {
               const Icon = ICONS[s.key];
               return (
-                <Reveal key={s.key} delay={(i % 3) * 120} className="w-full md:w-[calc(50%-8px)] lg:w-[calc((100%-32px)/3)]">
-                  <article className="group relative flex h-full flex-col overflow-hidden rounded-[28px] bg-[#1f1f1f] p-7 transition duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.25)]">
-                    <span className="pointer-events-none absolute right-6 top-4 text-[64px] font-light leading-none text-white/10 transition-colors duration-500 group-hover:text-brand/50">
+                <Reveal key={s.key} delay={(i % 3) * 120}>
+                  <article className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-white/5 bg-[#1f1f1f] p-7 transition duration-500 hover:-translate-y-2 hover:border-brand/40 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)]">
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-brand/0 blur-3xl transition duration-500 group-hover:bg-brand/25"
+                    />
+                    <span className="pointer-events-none absolute right-6 top-4 text-[64px] font-semibold leading-none text-transparent transition duration-500 [-webkit-text-stroke:1px_rgba(255,255,255,0.14)] group-hover:[-webkit-text-stroke:1px_#e8b628]">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <div className="flex flex-1 flex-col">
-                      <span className="relative z-10 mb-6 grid h-16 w-16 place-items-center rounded-2xl bg-black text-brand transition duration-500 group-hover:rotate-6 group-hover:bg-brand group-hover:text-black">
+
+                    <div className="relative flex flex-1 flex-col">
+                      <span className="mb-6 grid h-16 w-16 place-items-center rounded-2xl bg-brand/10 text-brand ring-1 ring-brand/30 transition duration-500 group-hover:rotate-6 group-hover:bg-brand group-hover:text-black">
                         <Icon size={26} />
                       </span>
 
@@ -90,7 +127,7 @@ export default function ServicesPage() {
                       </p>
                       <p className="mt-4 text-[15px] leading-[1.65] text-neutral-400">{s.desc}</p>
 
-                      <ul className="mt-5 space-y-3 border-t border-white/10 pt-5">
+                      <ul className="mb-6 mt-5 space-y-3 rounded-2xl bg-black/30 p-4">
                         {s.points.map((p) => (
                           <li key={p} className="flex items-start gap-3 text-[14px] font-medium text-neutral-200">
                             <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-black">
@@ -103,10 +140,12 @@ export default function ServicesPage() {
 
                       <Link
                         href="/contact"
-                        className="mt-6 inline-flex w-fit items-center gap-1.5 text-[14px] font-semibold transition-all group-hover:gap-3 group-hover:text-brand"
+                        className="mt-auto flex items-center justify-between border-t border-white/10 pt-5 text-[14px] font-semibold transition-colors group-hover:text-brand"
                       >
-                        <span className="border-b-2 border-brand pb-0.5">Enquire now</span>
-                        <FiArrowUpRight className="transition duration-300 group-hover:rotate-45" />
+                        <span>Enquire now</span>
+                        <span className="grid h-9 w-9 place-items-center rounded-full border border-white/15 transition duration-300 group-hover:rotate-45 group-hover:border-brand group-hover:bg-brand group-hover:text-black">
+                          <FiArrowUpRight size={16} />
+                        </span>
                       </Link>
                     </div>
                   </article>
@@ -114,36 +153,56 @@ export default function ServicesPage() {
               );
             })}
 
-            <Reveal delay={240} className="w-full md:w-[calc(50%-8px)] lg:w-[calc((100%-32px)/3)]">
-              <div className="relative flex h-full min-h-[420px] flex-col justify-between overflow-hidden rounded-[28px] bg-brand p-8 text-black">
-                <div aria-hidden className="absolute -right-12 -top-12 h-52 w-52 rounded-full bg-white/25" />
-                <div aria-hidden className="absolute -bottom-16 -left-10 h-48 w-48 rounded-full bg-black/10" />
+            <Reveal delay={240}>
+              <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-[28px] bg-brand p-7 text-black">
+                <div aria-hidden className="absolute -right-12 -top-16 h-56 w-56 rounded-full bg-white/25" />
+                <div aria-hidden className="absolute -bottom-20 left-1/4 h-52 w-52 rounded-full bg-black/10" />
 
                 <div className="relative">
-                  <span className="grid h-14 w-14 place-items-center rounded-2xl bg-black text-brand">
-                    <FiMessageCircle size={24} />
+                  <span className="grid h-16 w-16 place-items-center rounded-2xl bg-black text-brand">
+                    <FaWhatsapp size={30} />
                   </span>
-                  <h3 className="mt-6 text-[32px] font-semibold leading-[1.1] tracking-tight">
+                  <h3 className="mt-6 text-[28px] font-semibold leading-[1.1] tracking-tight">
                     Not sure where to start?
                   </h3>
-                  <p className="mt-4 text-[15px] leading-[1.6] text-black/75">
+                  <p className="mt-3 text-[15px] leading-[1.6] text-black/75">
                     Talk to our experts. The first consultation is simple, honest and without any pressure.
                   </p>
                 </div>
 
-                <div className="relative mt-8 space-y-4">
-                  <a
-                    href={`tel:+${company.phone}`}
-                    className="flex items-center gap-2 text-[18px] font-semibold"
-                  >
+                <ul className="relative space-y-3">
+                  {["Free first discussion", "Clear, transparent estimate", "Milestone-based payments", "Support from plan to handover"].map(
+                    (t) => (
+                      <li key={t} className="flex items-center gap-3 text-[14px] font-semibold">
+                        <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-black text-brand">
+                          <FiCheck size={13} strokeWidth={3} />
+                        </span>
+                        {t}
+                      </li>
+                    )
+                  )}
+                </ul>
+
+                <div className="relative flex flex-col gap-4 border-t border-black/15 pt-5">
+                  <a href={`tel:+${company.phone}`} className="flex items-center gap-2 text-[18px] font-semibold">
                     <FiPhoneCall /> {company.phoneDisplay}
                   </a>
-                  <Link
-                    href="/contact"
-                    className="group inline-flex items-center gap-2 rounded-full bg-black px-7 py-4 text-[15px] font-semibold text-white transition-all hover:gap-3"
-                  >
-                    Talk to us <FiArrowUpRight className="transition group-hover:rotate-45" />
-                  </Link>
+                  <div className="flex flex-wrap gap-3">
+                    <a
+                      href={whatsappLink("Hi Z&M Buildcon, I would like to discuss my project.")}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-black/30 px-5 py-3.5 text-[14px] font-semibold transition hover:bg-black hover:text-white"
+                    >
+                      <FaWhatsapp size={18} /> WhatsApp
+                    </a>
+                    <Link
+                      href="/contact"
+                      className="group inline-flex items-center gap-2 rounded-full bg-black px-6 py-3.5 text-[14px] font-semibold text-white transition-all hover:gap-3"
+                    >
+                      Talk to us <FiArrowUpRight className="transition group-hover:rotate-45" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -151,7 +210,28 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-black p-2 sm:p-3">
+      <section id="project-services" className="scroll-mt-20 bg-black p-2 sm:p-3">
+        <div className="rounded-[22px] bg-[#141414] px-3 py-10 sm:rounded-[28px] sm:px-6 sm:py-14 lg:px-8">
+          <Reveal className="mx-auto max-w-[680px] text-center">
+            <span className="inline-block rounded-full bg-white px-4 py-1.5 text-[12px] font-medium text-black">
+              Project Related Services
+            </span>
+            <h2 className="mt-4 text-[32px] font-medium leading-[1.15] tracking-tight sm:text-[44px]">
+              Planning, approvals and delivery
+            </h2>
+            <p className="mt-3 text-[15px] leading-snug text-neutral-400">
+              Integrated engineering, project consultancy and execution coordination for residential, commercial and
+              bungalow projects.
+            </p>
+          </Reveal>
+
+          <div className="mt-12">
+            <ProjectServices />
+          </div>
+        </div>
+      </section>
+
+      <section id="our-projects" className="scroll-mt-20 bg-black p-2 sm:p-3">
         <div className="rounded-[22px] bg-[#141414] px-3 py-10 sm:rounded-[28px] sm:px-6 sm:py-14 lg:px-8">
           <Reveal className="mx-auto max-w-[620px] text-center">
             <span className="inline-block rounded-full bg-white px-4 py-1.5 text-[12px] font-medium text-black">
@@ -200,7 +280,8 @@ export default function ServicesPage() {
 
       <section className="bg-black p-2 sm:p-3">
         <div
-          className="relative overflow-hidden rounded-[22px] bg-[#141414] px-4 py-14 text-white sm:rounded-[28px] sm:px-8 sm:py-20 lg:px-10"
+          id="process"
+          className="relative scroll-mt-20 overflow-hidden rounded-[22px] bg-[#141414] px-4 py-14 text-white sm:rounded-[28px] sm:px-8 sm:py-20 lg:px-10"
           style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px)", backgroundSize: "24px 24px" }}
         >
           <div aria-hidden className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-brand/30 blur-3xl" />
